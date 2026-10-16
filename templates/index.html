@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+</button>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Consulte a previsão do tempo de cidades do mundo todo.">
+    <title>Clima pelo Mundo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Clima Pelo Mundo - início">
+          <span class="brand-mark" aria-hidden="true">☼</span>
+          <span>Clima<span class="brand-light">Pelo Mundo</span></span>
+        </a>
+        <span class="top-note">Previsão para qualquer lugar</span>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span> DADOS METEOROLÓGICOS GLOBAIS</p>
+          <h1 id="page-title">O tempo, onde<br>você estiver.</h1>
+          <p class="hero-subtitle">Encontre uma cidade e veja as condições atuais e os próximo 5 dias.</p>
+
+          <form id="search-form" class="search-form">
+            <label class="sr-only" for="city-input">Nome da cidade</label>
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="city-input" name="city" type="search" minlength="2" placeholder="Ex.: Tóquio, Japão" autocomplete="off" required>
+            <button type="submit">Buscar <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="search-hint">Dica: inclua o país para encontrar a cidade certa.</p>
+          <p id="status" class="status" role="status" aria-live="polite"></p>
+
+          <div id="location-picker" class="location-picker" hidden>
+            <label for="location-select">Escolha uma correspondência</label>
+            <select id="location-select"></select>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun-halo"></div>
+          <div class="sun"></div>
+          <div class="cloud cloud-back"></div>
+          <div class="cloud cloud-front"></div>
+          <div class="art-coordinate">20° 27′ N &nbsp; 39° 12′ E</div>
+        </div>
+      </section>
+
+      <section id="weather-panel" class="weather-panel" hidden aria-live="polite">
+        <div class="weather-heading">
+          <div>
+            <p class="eyebrow dark-eyebrow">CONDIÇÕES ATUAIS</p>
+            <h2 id="city-title">—</h2>
+            <p id="local-time" class="local-time"></p>
+          </div>
+          <div id="weather-symbol" class="weather-symbol" aria-hidden="true">☀</div>
+        </div>
+
+        <div class="current-weather">
+          <div class="temperature-wrap">
+            <span id="temperature" class="temperature">—</span><span class="degree">°</span>
+            <p id="condition" class="condition">—</p>
+          </div>
+          <div class="weather-details">
+            <div class="detail"><span class="detail-icon" aria-hidden="true">◌</span><span><small>Sensação térmica</small><strong id="feels-like">—</strong></span></div>
+            <div class="detail"><span class="detail-icon" aria-hidden="true">⌁</span><span><small>Umidade</small><strong id="humidity">—</strong></span></div>
+            <div class="detail"><span class="detail-icon" aria-hidden="true">↗</span><span><small>Vento</small><strong id="wind">—</strong></span></div>
+            <div class="detail"><span class="detail-icon" aria-hidden="true">▧</span><span><small>Precipitação</small><strong id="precipitation">—</strong></span></div>
+          </div>
+        </div>
+
+        <div class="forecast-section">
+          <div class="forecast-title-row">
+            <h3>Próximos dias</h3>
+            <span>PREVISÃO DE 5 DIAS</span>
+          </div>
+          <div id="forecast-list" class="forecast-list"></div>
+        </div>
+        <p class="attribution">Dados meteorológicos: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a> · Geocodificação: GeoNames</p>
+      </section>
+
+      <footer class="footer">
+        <span>Feito para explorar o clima do mundo.</span>
+        <span>Desenvolvido por <a href="https://github.com/ivanyrsodre" target="_blank" rel="noreferrer">Ivanyr Sodré</a></span>
+        <span>Chuvendo muito lá fora? Que tal ver o clima de outro lugar?</span>
+        <span>Dados via Open-Meteo</span>
+      </footer>
+    </main>
+  </body>
+</html>
